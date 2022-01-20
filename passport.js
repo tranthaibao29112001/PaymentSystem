@@ -30,8 +30,7 @@ module.exports.localStrategy = app => {
         passwordField: 'pwd'
     },
         async (accountId, password, done) => {            
-            let account;
-            
+            let account;           
             try {
                 account = await db.getAccountInfo(accountId);          
                 if (!account) {

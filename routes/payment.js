@@ -14,10 +14,13 @@ route.get('/', paymentController.home);
 route.get('/changePassword', paymentController.getchangePassword);
 route.get('/rechargeMoney', paymentController.getRechargeMony);
 route.get('/balance',passport.authenticate('jwt', { session: false }), paymentController.getCurrentBalance);
+route.get('/createNewPwd', paymentController.createNewPwd);
+route.get('/log-out', paymentController.logOut);
 
 route.post('/signin', paymentController.doSignIn);
 route.post('/changePassword',paymentController.postChangePassword);
 route.post('/rechargeMoney', paymentController.postRechargeMony);
 route.post('/addPayment', passport.authenticate('jwt', { session: false }),paymentController.createAccount);
 route.post('/addAccount',paymentController.createAccount);
+route.post('/createNewPwd', paymentController.doCreateNewPwd);
 module.exports = route;

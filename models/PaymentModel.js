@@ -1,6 +1,7 @@
 const passport = require('passport');
 const { user, password } = require('pg/lib/defaults');
 const db = require('./dbConfig');
+const pgp = require('pg-promise')({ capSQL: true });
 
 module.exports = {
     addNewAccount: async (account_id)=>{
@@ -39,6 +40,29 @@ module.exports = {
         const res = await db.one('SELECT * FROM account WHERE account_id =$1',account_id);
         if(res.length===0) return null;
         return res;
+    },
+    get: async (value, tblName, fieldName) => {
+        const table = new pgp.helpers.TableName({ table: tblName, schema: 'public' });
+        const qStr = pgp.as.format(`SELECT * FROM $1 WHERE "${fieldName}"='${value}'`, table);
+        try {
+            const res = await db.any(qStr);
+            if (res.length > 0) {
+                return res[0];
+            }
+            return null;
+        } catch (error) {
+            console.log('error paymentM/get:', error);
+        }
+    },
+    update: async (tblName, entity, fieldName, value) => {
+        const table = new pgp.helpers.TableName({table: tblName, schema: 'public'});
+        const qStr = pgp.helpers.update(entity, null, table) + `WHERE "${fieldName}" = '${value}'`;
+        try {
+            const res = db.any(qStr);
+            return res;
+        } catch (error) {
+            console.log('error siteM/update:', error);
+        }
     }
     
 }
