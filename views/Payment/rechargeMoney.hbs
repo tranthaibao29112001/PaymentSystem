@@ -1,0 +1,37 @@
+<div class="row">
+    {{#if msg}}
+    <div class="alert alert-success col-12 text-center" role="alert">
+        {{msg}}
+    </div>
+    {{/if}}
+</div>
+<div class="home-content">
+            <div class="container">
+                <div class="row">
+                    <div class="mx-auto">
+                        <div class="card" style="width: 25rem;">
+                            <div class="card-body">
+                                <form action="/rechargeMoney" method="POST">
+                                    <div class="form-group">
+                                        <label for="seriNumber">Số seri</label>
+                                        <input type="number" class="form-control" id="seriNumber" name="seriNumber"
+                                            required="true">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="code">Mã thẻ</label>
+                                        <input type="number" class="form-control" id="code" name="code" required="true">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwd">Số tiền</label>
+                                        <input type="number" class="form-control" id="addMoney" name="addMoney" required="true">
+                                    </div>
+                                    <div class="form-group text-right">
+                                        <button type="submit" class="btn btn-success">Nạp tiền</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

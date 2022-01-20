@@ -1,0 +1,36 @@
+<div class="home-content">
+            <div class="container-fluid">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID Giao dịch</th>
+                            <th scope="col">Tài khoản gửi</th>
+                            <th scope="col">Tài khoản nhận</th>
+                            <th scope="col">Thời gian</th>
+                            <th scope="col">Số tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each paymentList}}
+                            <tr>
+                                <td >{{this.transfer_id}}</th>
+                                <td >{{this.transfer_account}}</th>
+                                <td>{{this.receive_account}}</td>
+                                <td>{{this.time}}</td>
+                                <td>{{this.amount}}</td>
+                            </tr>
+                        {{/each}}
+                        
+                    </tbody>
+                </table>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>

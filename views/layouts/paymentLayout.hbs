@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title> {{{title}}} </title>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="icon" href="/img/logo.png">
+    <link rel="stylesheet" href="/css/management.css">
+    {{>(cssP)}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" 
+        integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <section class="sidebar">
+        <a class="text-decoration-none" href="">
+            <div class="logo-details">
+                <img class="ml-1 mr-2" src="/img/logo.png" width="50px" alt="">
+                <span class="logo_name">Covid<b>Safe</b></span>
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li>
+                <a href="/" {{#eq title 'Trang chủ'}}class="active"{{/eq}}>
+                     <i class='bx bx-grid-alt'></i>
+                    <span class="links_name">Trang chính</span>
+                </a>
+            </li>
+            <li>
+                <a href="/paymentHistory" {{#eq title 'Lịch sử giao dịch'}}class="active"{{/eq}}>
+                     <i class='bx bx-list-ul'></i>
+                    <span class="links_name">Lịch sử giao dịch</span>
+                </a>
+            </li>
+            <li>
+                <a href="/rechargeMoney" {{#eq title 'Nạp tiền'}}class="active"{{/eq}}>
+                   
+                    <i class='bi bi-credit-card'></i>
+                    <span class="links_name">Nạp tiền</span>
+                </a>
+            </li>
+            <li>
+                <a type="button" href="/changePassword" {{#eq title 'Đổi mật khẩu'}}class="active"{{/eq}}>
+                    <i class='bx bx-cog'></i>
+                    <span class="links_name">Đổi mật khẩu</span>
+                </a>
+            </li>
+            <li class="log_out">
+                <a href="/log-out">
+                    <i class='bx bx-log-out'></i>
+                    <span class="links_name">Đăng xuất</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+    <section class="home-section">
+        <nav>
+            <div class="sidebar-button">
+                <i class='bx bx-menu sidebarBtn'></i>
+                <span class="dashboard">{{{title}}}</span>
+            </div>
+            <div class="dropleft position-relative">
+                <div class="text-success" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" href="#">
+                    <div class="row">
+                        <div class="profile-details col mx-3 ">
+                            <img src="/img/logo.png" alt="">
+                            <span class="admin_name text-success">Tên tài khoản: {{account_id}} </span>
+                        </div>
+                        <div class="profile-details col mx-3">
+                            <img src="/img/logo.png" alt="">
+                            <span class="admin_name text-success">Số dư:{{balance}} VNĐ </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </nav>
+
+        <div class="home-content">
+            <div class="container-fluid">
+                {{{body}}}
+            </div>
+        </div>
+
+    </section>
+
+    <script src="/js/jquery-3.5.1.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/management.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    {{>(scriptP)}}
+
+
+</body>
+
+</html>
