@@ -19,5 +19,5 @@ route.post('/signin', paymentController.doSignIn);
 route.post('/changePassword',paymentController.postChangePassword);
 route.post('/rechargeMoney', paymentController.postRechargeMony);
 route.post('/addPayment', passport.authenticate('jwt', { session: false }),paymentController.createAccount);
-route.post('/addAccount', passport.authenticate('jwt', { session: false }),paymentController.createAccount);
+route.post('/addAccount',paymentController.createAccount);
 module.exports = route;
