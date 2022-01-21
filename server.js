@@ -7,6 +7,15 @@ const port = 3003;
 const handlebars = require('express-handlebars');
 const session = require('express-session');
 
+const fs = require("fs");
+
+const https = require("https");
+
+const options = {
+  key: fs.readFileSync("cert/key.pem"),
+  cert: fs.readFileSync("cert/cert.pem"),
+};
+
 const hbs = handlebars.create({
     defaultLayout: 'mainLayout',
     extname: 'hbs',
@@ -74,7 +83,8 @@ app.use(cors());
 
 //Init routes
 route(app);
+var httpsServer = https.createServer(options, app);
 
-app.listen(port, () => {
-    console.log(`App listening at http://localhost:${port}`)
-})
+httpsServer.listen(port, () => {
+    console.log(`App listening at http://localhost:${port}`);
+});
